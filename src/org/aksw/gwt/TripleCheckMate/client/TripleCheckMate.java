@@ -5,8 +5,12 @@ import org.aksw.gwt.TripleCheckMate.shared.evaluate.SessionContext;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.logical.shared.BeforeSelectionEvent;
 import com.google.gwt.event.logical.shared.BeforeSelectionHandler;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TabPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
@@ -44,13 +48,12 @@ public class TripleCheckMate implements EntryPoint {
 
 			@Override
 			public void onBeforeSelection(BeforeSelectionEvent<Integer> event) {
-				if (SessionContext.user.userID == 0 && event.getItem() > 0)
+				if (SessionContext.user.userID == -1) {
 					event.cancel();
-				//if (SessionContext.user.userID != 0 && event.getItem() != 1)
-				//	event.cancel();
+				}
 			}
 		});
-
+		
 		page.add(SessionContext.tabPanel);
 
 		VerticalPanel bodyPanel = new VerticalPanel();
