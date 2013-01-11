@@ -10,3 +10,5 @@ In the future it will be shipped with an h2 database inside the war file as a re
 
 The software was built with Google Web Toolkit
 https://developers.google.com/web-toolkit/
+
+You can also watch a demo video here: http://www.youtube.com/watch?v=l-StthTvjFI
