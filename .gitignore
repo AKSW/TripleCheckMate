@@ -1,0 +1,4 @@
+*.cache.*
+*.gwt.*
+war/WEB-INF/classes*
+war/WEB-INF/deploy*
