@@ -76,7 +76,7 @@ public class UserRecord implements Comparable<UserRecord> ,Serializable{
 		String img = (picture.equals("")) ? "" : "<img width=\"20\" height=\"20\" src=\"" + picture + "\" class =\"user-display-picture\"/>";
 		return "<div class=\"user-display\">" + img + name + "</div>";
 	}
-	@Override
+
 	public int compareTo(UserRecord arg0) {
 		// TODO Auto-generated method stub
 		return name.compareTo(arg0.name);

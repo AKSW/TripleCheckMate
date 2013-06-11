@@ -35,7 +35,6 @@ public class UserRequestImpl  extends RemoteServiceServlet implements UserReques
 		return getServletContext().getRealPath("/");
 	}
 
-	@Override
 	public UserRecord getUserInfo(String userGoogleID) throws StorageServiceException {
 
 		String absolutePath = getServletContext().getRealPath("/");
@@ -43,7 +42,6 @@ public class UserRequestImpl  extends RemoteServiceServlet implements UserReques
 		return service.getUserRecord(userGoogleID);
 	}
 
-	@Override
 	public long saveUserInfo(UserRecord user) throws StorageServiceException {
 
 		String absolutePath = getServletContext().getRealPath("/");
@@ -53,15 +51,12 @@ public class UserRequestImpl  extends RemoteServiceServlet implements UserReques
 		return u.userID;
 	}
 	
-	
-	@Override
 	public long createAndGetSession(long userID, long campaignID)
 			throws StorageServiceException {
 		StorageService service = StorageFactory.create(getAbsolutePath());
 		return service.createAndGetSession(userID, campaignID);
 	}
 
-	@Override
 	public List<UserRecord> getUSerStatistics(long userID)
 			throws StorageServiceException {
 		StorageService service = StorageFactory.create(getAbsolutePath());

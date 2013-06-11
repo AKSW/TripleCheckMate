@@ -60,7 +60,6 @@ public class ClassItem implements Comparable<ClassItem> , Serializable{
 		children.clear();
 	}
 
-	@Override
 	public int compareTo(ClassItem arg0) {
 		return uri.compareTo(arg0.uri);
 	}

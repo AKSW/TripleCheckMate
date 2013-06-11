@@ -25,7 +25,7 @@ import org.aksw.gwt.TripleCheckMate.shared.storage.exception.StorageServiceExcep
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
-@RemoteServiceRelativePath("evaluate")
+@RemoteServiceRelativePath("EvaluationRequest")
 public interface EvaluationRequest extends RemoteService {
 	public String SaveEvaluation(long sessionID, EvaluateResource item) throws StorageServiceException;
 	

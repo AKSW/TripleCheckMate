@@ -15,18 +15,13 @@
  ******************************************************************************/
 package org.aksw.gwt.TripleCheckMate.client;
 
-import org.aksw.gwt.TripleCheckMate.shared.evaluate.SessionContext;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.logical.shared.BeforeSelectionEvent;
 import com.google.gwt.event.logical.shared.BeforeSelectionHandler;
-import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.logical.shared.SelectionHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TabPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import org.aksw.gwt.TripleCheckMate.shared.evaluate.SessionContext;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -60,8 +55,6 @@ public class TripleCheckMate implements EntryPoint {
 		SessionContext.tabPanel.selectTab(0);
 		SessionContext.tabPanel.setAnimationEnabled(true);
 		SessionContext.tabPanel.addBeforeSelectionHandler(new BeforeSelectionHandler<Integer>() {
-
-			@Override
 			public void onBeforeSelection(BeforeSelectionEvent<Integer> event) {
 				if (SessionContext.user.userID == -1) {
 					event.cancel();

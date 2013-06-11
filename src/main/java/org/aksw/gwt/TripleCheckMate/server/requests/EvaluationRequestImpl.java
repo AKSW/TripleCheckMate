@@ -59,34 +59,29 @@ public class EvaluationRequestImpl extends RemoteServiceServlet implements
 		return "OK";
 	}
 
-	@Override
 	public List<String> getExistingEvaluations(long user, String classType)
 			throws StorageServiceException {
 		StorageService service = StorageFactory.create(getAbsolutePath());
 		return service.getExistingEvaluations(user, classType);
 	}
 
-	@Override
 	public List<ClassItem> getClassChildren(long classID)
 			throws StorageServiceException {
 		StorageService service = StorageFactory.create(getAbsolutePath());
 		return service.getClassChildren(classID);
 	}
 
-	@Override
 	public int saveClassCount(long id, long count)
 			throws StorageServiceException {
 		StorageService service = StorageFactory.create(getAbsolutePath());
 		return service.updateClassCount(id, count);
 	}
 
-	@Override
 	public int saveClassFromOWL(String url) throws StorageServiceException {
 		StorageService service = StorageFactory.create(getAbsolutePath());
 		return service.saveClasses(getCategoriesFromOWL(url));
 	}
 
-	@Override
 	public List<ErrorItem> getErrorChildren(long errorID)
 			throws StorageServiceException {
 		StorageService service = StorageFactory.create(getAbsolutePath());

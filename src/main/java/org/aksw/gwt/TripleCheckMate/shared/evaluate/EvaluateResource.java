@@ -64,7 +64,7 @@ public class EvaluateResource  implements Comparable<EvaluateResource> , Seriali
 		this.items.clear();
 		this.items.addAll(items);
 	}
-	@Override
+
 	public int compareTo(EvaluateResource arg0) {
 		// TODO Auto-generated method stub
 		return 0;

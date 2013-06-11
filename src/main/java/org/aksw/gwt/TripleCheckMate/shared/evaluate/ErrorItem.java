@@ -42,7 +42,6 @@ public class ErrorItem implements Comparable<ErrorItem> , Serializable{
 		this.isLeaf = isLeaf;
 	}
 
-	@Override 
 	public int compareTo(ErrorItem arg0) {
 		return title.compareTo(arg0.title);
 	}

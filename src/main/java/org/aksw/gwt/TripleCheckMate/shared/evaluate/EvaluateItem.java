@@ -59,7 +59,6 @@ public class EvaluateItem implements Comparable<EvaluateItem> , Serializable{
 		isWrong = false;
 	}
 	
-	@Override
 	public int compareTo(EvaluateItem item) {
 		if (item == null )
 			return -1;
