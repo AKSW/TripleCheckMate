@@ -87,7 +87,7 @@ public class ResourceSelection extends Composite {
 		setupFetchButton();
 		
 		txtManual.addSelectionHandler(new SelectionHandler<SparqlSuggestOracle.Suggestion>() {
-			@Override
+
 			public void onSelection(SelectionEvent<SparqlSuggestOracle.Suggestion> event) {
 				// TODO Auto-generated method stub
 	            expandOptions(false);
@@ -97,7 +97,6 @@ public class ResourceSelection extends Composite {
 		
 		btnFinish.addClickHandler(new ClickHandler() {
 
-			@Override
 			public void onClick(ClickEvent event) {
 				if (Window.confirm("Are you sure you want to finish?")) {
 					Window.alert("Thank you for your time, see your position in the hall of Fame!");
@@ -109,7 +108,7 @@ public class ResourceSelection extends Composite {
 
 	private void setupRadioButtons() {
 		ClickHandler handler = new ClickHandler() {
-			@Override
+
 			public void onClick(ClickEvent event) {
 				// TODO Auto-generated method stub
 				pnlSelAny.setVisible(false);
@@ -147,7 +146,7 @@ public class ResourceSelection extends Composite {
 
 		// Add a handler that automatically generates some children
 		treeClass.addOpenHandler(new OpenHandler<TreeItem>() {
-			@Override
+
 			public void onOpen(OpenEvent<TreeItem> event) {
 				final TreeItem treeItem = event.getTarget();
 				if (treeItem.getChildCount() == 1
@@ -187,7 +186,6 @@ public class ResourceSelection extends Composite {
 	private void setupFetchButton() {
 		btnFetch.addClickHandler(new ClickHandler() {
 
-			@Override
 			public void onClick(ClickEvent event) {
 				expandOptions(false);
 				fetchAndLoadRandom();
@@ -228,7 +226,7 @@ public class ResourceSelection extends Composite {
 
 							RequestBuilder rb = new RequestBuilder(RequestBuilder.GET, queryURL);
 							rb.setCallback(new RequestCallback() {
-								@Override
+
 								public void onResponseReceived(Request request,
 										Response response) {
 									JsonSparqlResult result = new JsonSparqlResult(response
@@ -242,7 +240,6 @@ public class ResourceSelection extends Composite {
 									saveClassCount(selectedClass.ID, selectedClass.count);
 								}
 
-								@Override
 								public void onError(Request request, Throwable exception) {
 									Window.alert("ERROR");
 									SessionContext.hidePopup();
@@ -272,7 +269,7 @@ public class ResourceSelection extends Composite {
 					.generateQueryURL(sparqlQueryURL);
 			RequestBuilder rb = new RequestBuilder(RequestBuilder.GET, queryURL);
 			rb.setCallback(new RequestCallback() {
-				@Override
+
 				public void onResponseReceived(Request request,
 						Response response) {
 					JsonSparqlResult result = new JsonSparqlResult(response
@@ -282,7 +279,6 @@ public class ResourceSelection extends Composite {
 					fetchResource(resource, classType);
 				}
 
-				@Override
 				public void onError(Request request, Throwable exception) {
 					Window.alert("ERROR");
 					SessionContext.hidePopup();
@@ -344,7 +340,7 @@ public class ResourceSelection extends Composite {
 			SessionContext.showPopup();
 			RequestBuilder rb = new RequestBuilder(RequestBuilder.GET, queryURL);
 			rb.setCallback(new RequestCallback() {
-				@Override
+
 				public void onResponseReceived(Request request,
 						Response response) {
 					JsonSparqlResult result = new JsonSparqlResult(response
@@ -359,7 +355,6 @@ public class ResourceSelection extends Composite {
 					SessionContext.hidePopup();
 				}
 
-				@Override
 				public void onError(Request request, Throwable exception) {
 					Window.alert("ERROR");
 					SessionContext.hidePopup();
