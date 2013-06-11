@@ -1,2 +1,0 @@
-serviceClass: org.aksw.gwt.TripleCheckMate.client.requests.EvaluationRequest
-path: 504FC95DFD94143D3E30A2C4D2EC5768.gwt.rpc
