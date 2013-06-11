@@ -1,4 +1,0 @@
-# Module triplecheckmate
-# RPC service class, partial path of RPC policy file
-main.java.org.aksw.gwt.TripleCheckMate.client.requests.EvaluationRequest, 504FC95DFD94143D3E30A2C4D2EC5768.gwt.rpc
-main.java.org.aksw.gwt.TripleCheckMate.client.requests.UserRequest, 3FB925244AFE8A39028E5F1F76DED7EC.gwt.rpc

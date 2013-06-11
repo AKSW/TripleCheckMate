@@ -1,5 +1,8 @@
 *.cache.*
 *.gwt.*
+.classpath
+.project
+*.iml
 .idea/*
-war/WEB-INF/classes*
-war/WEB-INF/deploy*
+data/*
+target/*
