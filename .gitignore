@@ -1,5 +1,3 @@
-*.cache.*
-*.gwt.*
 .classpath
 .project
 *.iml

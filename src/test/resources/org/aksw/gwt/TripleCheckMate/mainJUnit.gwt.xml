@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <!-- Inherit our applications main module.                      -->
+  <inherits name='org.aksw.gwt.TripleCheckMate.main' />
+
+  <!-- Specify the path to any remote services.                   -->
+  <servlet path="/main/greet" class="org.aksw.gwt.TripleCheckMate.server.GreetingServiceImpl" />
+
+</module>
