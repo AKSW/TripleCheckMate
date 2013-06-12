@@ -1,21 +1,22 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:t="urn:import:com.google.gwt.user.cellview.client">
-	<ui:style>
-		
-	</ui:style>
-	<g:VerticalPanel width="100%" spacing="4">
-		<g:HorizontalPanel spacing="4" 
-			addStyleNames="float-right" >
-			<g:ListBox ui:field="lstPager"></g:ListBox>
-			<t:SimplePager ui:field="pgrTop" location="RIGHT" width="200px"></t:SimplePager>
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:t="urn:import:com.google.gwt.user.cellview.client">
+    <ui:style>
 
-		</g:HorizontalPanel>
-		<t:CellTable ui:field="tblEvalTriples" width="100%">
-		</t:CellTable>
+    </ui:style>
+    <g:VerticalPanel width="100%" spacing="4">
+        <g:HorizontalPanel spacing="4"
+                           addStyleNames="float-right">
+            <g:ListBox ui:field="lstPager"></g:ListBox>
+            <t:SimplePager ui:field="pgrTop" location="RIGHT" width="200px"></t:SimplePager>
 
-		<t:SimplePager ui:field="pgrBottom" location="RIGHT" width="200px"
-			addStyleNames="float-right"></t:SimplePager>
+        </g:HorizontalPanel>
+        <t:CellTable ui:field="tblEvalTriples" width="100%">
+        </t:CellTable>
 
-	</g:VerticalPanel>
+        <t:SimplePager ui:field="pgrBottom" location="RIGHT" width="200px"
+                       addStyleNames="float-right"></t:SimplePager>
+
+    </g:VerticalPanel>
 </ui:UiBinder>

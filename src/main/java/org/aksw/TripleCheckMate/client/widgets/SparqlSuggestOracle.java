@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2013 Agile Knowledge Engineering and Semantic Web (AKSW) Group
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,44 +15,43 @@
  ******************************************************************************/
 package org.aksw.TripleCheckMate.client.widgets;
 
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestException;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.SuggestOracle;
+import org.aksw.TripleCheckMate.shared.evaluate.SessionContext;
+import org.aksw.TripleCheckMate.shared.sparql.JsonSparqlResult;
+import org.aksw.TripleCheckMate.shared.sparql.ResultItem;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import org.aksw.TripleCheckMate.shared.evaluate.SessionContext;
-import org.aksw.TripleCheckMate.shared.sparql.JsonSparqlResult;
-import org.aksw.TripleCheckMate.shared.sparql.ResultItem;
-
-import com.google.gwt.http.client.RequestBuilder;
-import com.google.gwt.http.client.RequestException;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.SuggestOracle;
-
 public class SparqlSuggestOracle extends SuggestOracle {
 
-	@Override
-	public void requestSuggestions(final Request request, final Callback callback) {
-		// TODO Auto-generated method stub
-		String addressQuery = request.getQuery();
+    @Override
+    public void requestSuggestions(final Request request, final Callback callback) {
+        // TODO Auto-generated method stub
+        String addressQuery = request.getQuery();
         // look up for suggestions, only if at least 2 letters have been typed
-        if (addressQuery.length() > 2) {    
-        	try {
-    			String query = SessionContext.endpoint.getQueryforAutocomplete(addressQuery);
-    			String queryURL = SessionContext.endpoint.generateQueryURL(query);
+        if (addressQuery.length() > 2) {
+            try {
+                String query = SessionContext.endpoint.getQueryforAutocomplete(addressQuery);
+                String queryURL = SessionContext.endpoint.generateQueryURL(query);
 
-    			RequestBuilder rb = new RequestBuilder(RequestBuilder.GET, queryURL);
-    			rb.setCallback(new com.google.gwt.http.client.RequestCallback() {
+                RequestBuilder rb = new RequestBuilder(RequestBuilder.GET, queryURL);
+                rb.setCallback(new com.google.gwt.http.client.RequestCallback() {
 
-    				public void onResponseReceived(com.google.gwt.http.client.Request req, com.google.gwt.http.client.Response res) {
-    					try {
+                    public void onResponseReceived(com.google.gwt.http.client.Request req, com.google.gwt.http.client.Response res) {
+                        try {
                             JsonSparqlResult result = new JsonSparqlResult(res.getText());
                             Collection<Suggestion> suggestions = new ArrayList<Suggestion>();
-                            for (List<ResultItem> i : result.data){
-                                 if (i.size() == 1){
-                                     suggestions.add(new SparqlSuggestItem(i.get(0).value));
-                                 }
+                            for (List<ResultItem> i : result.data) {
+                                if (i.size() == 1) {
+                                    suggestions.add(new SparqlSuggestItem(i.get(0).value));
+                                }
                             }
 
                             callback.onSuggestionsReady(request, new Response(suggestions));
@@ -60,41 +59,41 @@ public class SparqlSuggestOracle extends SuggestOracle {
                             e.printStackTrace();
                             Window.alert("Error communicating with SPARQL Endpoint!");
                         }
-    				}
+                    }
 
-    				public void onError(com.google.gwt.http.client.Request request, Throwable exception) {
+                    public void onError(com.google.gwt.http.client.Request request, Throwable exception) {
 
-    				}
-    			});
-    			rb.send();
-    		} catch (RequestException e) {
-    			Window.alert("Error occurred" + e.getMessage());
-    		}
+                    }
+                });
+                rb.send();
+            } catch (RequestException e) {
+                Window.alert("Error occurred" + e.getMessage());
+            }
 
         } else {
             Response response = new Response(
-                    Collections.<Suggestion> emptyList());
+                    Collections.<Suggestion>emptyList());
             callback.onSuggestionsReady(request, response);
         }
-	}
-	
-	public class SparqlSuggestItem implements SuggestOracle.Suggestion, Serializable {
+    }
 
-	    private static final long serialVersionUID = 1L;
+    public class SparqlSuggestItem implements SuggestOracle.Suggestion, Serializable {
 
-	    public String uri;
+        private static final long serialVersionUID = 1L;
 
-	    public SparqlSuggestItem(String uri) {
-	        this.uri = uri;
-	    }
+        public String uri;
 
-	    public String getDisplayString() {
-	        return this.uri;
-	    }
+        public SparqlSuggestItem(String uri) {
+            this.uri = uri;
+        }
 
-	    public String getReplacementString() {
-	        return this.uri;
-	    }
-	}
+        public String getDisplayString() {
+            return this.uri;
+        }
+
+        public String getReplacementString() {
+            return this.uri;
+        }
+    }
 
 }

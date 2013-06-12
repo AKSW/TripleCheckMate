@@ -12,9 +12,9 @@
     <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
     <!-- Other module inherits                                      -->
-    <inherits name="com.google.gwt.http.HTTP" />
-    <inherits name="com.google.gwt.json.JSON" />
-    <inherits name="com.google.api.gwt.oauth2.OAuth2" />
+    <inherits name="com.google.gwt.http.HTTP"/>
+    <inherits name="com.google.gwt.json.JSON"/>
+    <inherits name="com.google.api.gwt.oauth2.OAuth2"/>
 
     <!-- Specify the app entry point class.                         -->
     <entry-point class='org.aksw.TripleCheckMate.client.TripleCheckMate'/>
@@ -27,9 +27,6 @@
     <servlet class="org.aksw.TripleCheckMate.server.requests.UserRequestImpl" path="/UserRequest"/>
 
     <servlet class="org.aksw.TripleCheckMate.server.requests.EvaluationRequestImpl" path="/EvaluationRequest"/>
-
-
-
 
 
 </module>
