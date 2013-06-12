@@ -7,11 +7,11 @@
 	<!-- Servlets -->
 	<servlet>
 		<servlet-name>EvaluationRequestServlet</servlet-name>
-		<servlet-class>org.aksw.gwt.TripleCheckMate.server.requests.EvaluationRequestImpl</servlet-class>
+		<servlet-class>org.aksw.TripleCheckMate.server.requests.EvaluationRequestImpl</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>UserRequestServlet</servlet-name>
-		<servlet-class>org.aksw.gwt.TripleCheckMate.server.requests.UserRequestImpl</servlet-class>
+		<servlet-class>org.aksw.TripleCheckMate.server.requests.UserRequestImpl</servlet-class>
 	</servlet>
 
 	<servlet-mapping>

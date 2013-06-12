@@ -1,0 +1,59 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:c="urn:import:org.aksw.TripleCheckMate.client.widgets">
+	<ui:style>
+		.radio-panel {
+			padding-right: 1em;
+			width: 100px;
+		}
+		
+		.options-panel {
+			padding-left: 1em;
+			border-left: 1px solid;
+			min-height: 150px;
+		}
+
+	</ui:style>
+	<g:VerticalPanel width="500px">
+		<g:HorizontalPanel width="100%">
+			<g:HTML>Please choose a resource to evaluate:</g:HTML>
+			<g:HTML ui:field="htmlUserInfo" addStyleNames="float-right">First Lastname:
+				submitted # / 3, skipped #</g:HTML>
+		</g:HorizontalPanel>
+		<g:DisclosurePanel ui:field="pnlAdvanced" open="true"
+			animationEnabled="true" title="Advanced Options">
+			<g:header>Advanced Options</g:header>
+
+			<g:HorizontalPanel>
+
+				<g:VerticalPanel addStyleNames="{style.radio-panel}">
+					<g:RadioButton ui:field="rdAny" name="selection">Any</g:RadioButton>
+					<g:RadioButton ui:field="rdClass" name="selection">Class</g:RadioButton>
+					<g:RadioButton ui:field="rdManual" name="selection">Manual</g:RadioButton>
+				</g:VerticalPanel>
+				<g:VerticalPanel addStyleNames="{style.options-panel}">
+					<g:VerticalPanel ui:field="pnlSelAny">
+						<g:HTML>A completly random resource will be fetched that, may not
+							belong to a Class</g:HTML>
+					</g:VerticalPanel>
+					<g:VerticalPanel ui:field="pnlSelClass">
+						<g:HTML>A random resource will be fetched that belongs to the
+							selected class</g:HTML>
+						<g:ScrollPanel width="400px" height="350px">
+							<g:Tree ui:field="treeClass"></g:Tree>
+						</g:ScrollPanel>
+					</g:VerticalPanel>
+					<g:VerticalPanel ui:field="pnlSelManual">
+						<g:HTML>Please write the resource you want to evaluate manually</g:HTML>
+						<c:SparqlSuggestBox ui:field="txtManual" width="300px"></c:SparqlSuggestBox>
+					</g:VerticalPanel>
+				</g:VerticalPanel>
+			</g:HorizontalPanel>
+		</g:DisclosurePanel>
+		<g:HorizontalPanel spacing="5" addStyleNames="float-right">
+			<g:Button ui:field="btnFinish">Finish</g:Button>
+			<g:Button ui:field="btnFetch">Fetch Next</g:Button>
+		</g:HorizontalPanel>
+
+	</g:VerticalPanel>
+</ui:UiBinder>

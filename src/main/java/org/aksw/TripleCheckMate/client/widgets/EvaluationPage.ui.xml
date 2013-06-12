@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:c="urn:import:org.aksw.TripleCheckMate.client.widgets">
+	<ui:style>
+		.more-padding {
+			padding-left: 2em;
+		}
+
+	</ui:style>
+	<g:VerticalPanel ui:field="pnlBody" spacing="4">
+
+		<!-- <c:ResourceSelection ui:field="pnlEvalSelect"></c:ResourceSelection> -->
+		<g:HorizontalPanel spacing="4" width="100%">
+			<g:VerticalPanel>
+				<g:HTML ui:field="htmlAbout">
+					<h2>About: http://dbpedia.org/resource/XYZ</h2>
+				</g:HTML>
+				<g:VerticalPanel spacing="4" addStyleNames="{style.more-padding}">
+					<g:HorizontalPanel spacing="4">
+
+						<g:HTML>This resource: </g:HTML>
+						<g:RadioButton ui:field="rdValid" value="false" name="valid" title="This resource looks perfect">is Correct</g:RadioButton>
+						<g:RadioButton ui:field="rdErrors" value="false" name="valid">has Errors</g:RadioButton>
+						<g:CheckBox ui:field="ckMissing"  value="false" title="i.e. no rdf:type">has Missing Information</g:CheckBox>
+					</g:HorizontalPanel>
+
+					<g:HorizontalPanel spacing="4">
+						<g:HTML>Comments: </g:HTML>
+						<g:TextArea ui:field="txtComments" visibleLines="1"
+							title="Resource Specific Comments" width="300px"></g:TextArea>
+						<g:Button ui:field="btnSave">Save</g:Button>
+						<g:Button ui:field="btnSkip">Skip</g:Button>
+					</g:HorizontalPanel>
+				</g:VerticalPanel>
+			</g:VerticalPanel>
+			<g:HTML ui:field="htmlUserProgress" addStyleNames="float-right"></g:HTML>
+		</g:HorizontalPanel>
+
+		<c:EvaluationTable ui:field="tblEval"></c:EvaluationTable>
+
+	</g:VerticalPanel>
+</ui:UiBinder>

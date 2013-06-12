@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='triplecheckmate'>
+    <!-- Inherit the core Web Toolkit stuff.                        -->
+    <inherits name='com.google.gwt.user.User'/>
+
+    <!-- Inherit the default GWT style sheet.  You can change       -->
+    <!-- the theme of your GWT application by uncommenting          -->
+    <!-- any one of the following lines.                            -->
+    <inherits name='com.google.gwt.user.theme.clean.Clean'/>
+    <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
+    <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+    <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+    <!-- Other module inherits                                      -->
+    <inherits name="com.google.gwt.http.HTTP" />
+    <inherits name="com.google.gwt.json.JSON" />
+    <inherits name="com.google.api.gwt.oauth2.OAuth2" />
+
+    <!-- Specify the app entry point class.                         -->
+    <entry-point class='org.aksw.TripleCheckMate.client.TripleCheckMate'/>
+
+    <!-- Specify the paths for translatable code                    -->
+    <source path='client'/>
+    <source path='shared'/>
+
+
+    <servlet class="org.aksw.TripleCheckMate.server.requests.UserRequestImpl" path="/UserRequest"/>
+
+    <servlet class="org.aksw.TripleCheckMate.server.requests.EvaluationRequestImpl" path="/EvaluationRequest"/>
+
+
+
+
+
+</module>

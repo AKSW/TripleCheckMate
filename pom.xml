@@ -6,7 +6,7 @@
 
     <!-- POM file generated with GWT webAppCreator -->
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.aksw.gwt.TripleCheckMate</groupId>
+    <groupId>org.aksw.TripleCheckMate</groupId>
     <artifactId>TripleCheckMate</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -101,7 +101,7 @@
                 <configuration>
                     <runTarget>TripleCheckMate.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
-                    <i18nMessagesBundle>org.aksw.gwt.TripleCheckMate.client.Messages</i18nMessagesBundle>
+                    <i18nMessagesBundle>org.aksw.TripleCheckMate.client.Messages</i18nMessagesBundle>
                 </configuration>
             </plugin>
 
