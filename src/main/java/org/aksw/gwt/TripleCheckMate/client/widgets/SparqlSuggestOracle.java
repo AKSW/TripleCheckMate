@@ -46,15 +46,20 @@ public class SparqlSuggestOracle extends SuggestOracle {
     			rb.setCallback(new com.google.gwt.http.client.RequestCallback() {
 
     				public void onResponseReceived(com.google.gwt.http.client.Request req, com.google.gwt.http.client.Response res) {
-    					JsonSparqlResult result = new JsonSparqlResult(res.getText());
-    					Collection<Suggestion> suggestions = new ArrayList<Suggestion>();
-    					for (List<ResultItem> i : result.data){
-    						 if (i.size() == 1){
-    							 suggestions.add(new SparqlSuggestItem(i.get(0).value));
-    						 }
-    					}
+    					try {
+                            JsonSparqlResult result = new JsonSparqlResult(res.getText());
+                            Collection<Suggestion> suggestions = new ArrayList<Suggestion>();
+                            for (List<ResultItem> i : result.data){
+                                 if (i.size() == 1){
+                                     suggestions.add(new SparqlSuggestItem(i.get(0).value));
+                                 }
+                            }
 
-                        callback.onSuggestionsReady(request, new Response(suggestions));
+                            callback.onSuggestionsReady(request, new Response(suggestions));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Window.alert("Error communicating with SPARQL Endpoint!");
+                        }
     				}
 
     				public void onError(com.google.gwt.http.client.Request request, Throwable exception) {

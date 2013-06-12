@@ -29,7 +29,7 @@ public class JsonSparqlResult{
 	public List<List<ResultItem>> data = new ArrayList<List<ResultItem>>();
 	public List<String> head = new ArrayList<String>();
 	
-	public JsonSparqlResult(String json) { 
+	public JsonSparqlResult(String json) throws Exception {
 		try {
 		// Parse json and get the Object
 		JSONValue value = JSONParser.parseLenient(json);
@@ -75,7 +75,8 @@ public class JsonSparqlResult{
         }
 		} catch (Exception e){
 			e.printStackTrace();
-		}
+            throw new Exception();
+        }
 		
 	}
 	

@@ -229,15 +229,21 @@ public class ResourceSelection extends Composite {
 
 								public void onResponseReceived(Request request,
 										Response response) {
-									JsonSparqlResult result = new JsonSparqlResult(response
-											.getText());
+                                    try {
+                                        JsonSparqlResult result = new JsonSparqlResult(response
+                                                .getText());
 
-									String classCount = result.getFirstResult(); 
-									selectedClass.count = Long.parseLong(classCount);
-									String query = SessionContext.endpoint
-											.getQueryforRandomClassResource(selectedClass.uri, selectedClass.count);
-									fetchRandomResource(query, selectedClass.uri);
-									saveClassCount(selectedClass.ID, selectedClass.count);
+                                        String classCount = result.getFirstResult();
+                                        selectedClass.count = Long.parseLong(classCount);
+                                        String query = SessionContext.endpoint
+                                                .getQueryforRandomClassResource(selectedClass.uri, selectedClass.count);
+                                        fetchRandomResource(query, selectedClass.uri);
+                                        saveClassCount(selectedClass.ID, selectedClass.count);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        Window.alert("Error communicating with SPARQL Endpoint!");
+                                        SessionContext.hidePopup();
+                                    }
 								}
 
 								public void onError(Request request, Throwable exception) {
@@ -272,11 +278,17 @@ public class ResourceSelection extends Composite {
 
 				public void onResponseReceived(Request request,
 						Response response) {
-					JsonSparqlResult result = new JsonSparqlResult(response
+				    try{
+						JsonSparqlResult result = new JsonSparqlResult(response
 							.getText());
 					
-					String resource = result.getFirstResult(); 
-					fetchResource(resource, classType);
+                        String resource = result.getFirstResult();
+                        fetchResource(resource, classType);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Window.alert("Error communicating with SPARQL Endpoint!");
+                        SessionContext.hidePopup();
+                    }
 				}
 
 				public void onError(Request request, Throwable exception) {
@@ -343,16 +355,23 @@ public class ResourceSelection extends Composite {
 
 				public void onResponseReceived(Request request,
 						Response response) {
-					JsonSparqlResult result = new JsonSparqlResult(response
+                    try {
+                        JsonSparqlResult result = new JsonSparqlResult(response
 							.getText());
-					List<EvaluateItem> dataList = new ArrayList<EvaluateItem>();
-					for (int i = 0; i < result.data.size(); i++) {
-						dataList.add(new EvaluateItem(i, new ResultItem(
-								resource, "uri", "", ""), result.data.get(i)
-								.get(0), result.data.get(i).get(1)));
-					}
-					SessionContext.setNewEvaluation(resource, dataList, classType);
-					SessionContext.hidePopup();
+
+                        List<EvaluateItem> dataList = new ArrayList<EvaluateItem>();
+                        for (int i = 0; i < result.data.size(); i++) {
+                            dataList.add(new EvaluateItem(i, new ResultItem(
+                                    resource, "uri", "", ""), result.data.get(i)
+                                    .get(0), result.data.get(i).get(1)));
+                        }
+                        SessionContext.setNewEvaluation(resource, dataList, classType);
+                        SessionContext.hidePopup();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Window.alert("Error communicating with SPARQL Endpoint!");
+                        SessionContext.hidePopup();
+                    }
 				}
 
 				public void onError(Request request, Throwable exception) {
