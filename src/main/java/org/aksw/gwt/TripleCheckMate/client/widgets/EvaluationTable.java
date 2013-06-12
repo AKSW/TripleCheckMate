@@ -131,7 +131,7 @@ public class EvaluationTable extends Composite {
 		final SafeHtmlCell cellP = new SafeHtmlCell();
 		Column<EvaluateItem, SafeHtml> colPred = new Column<EvaluateItem, SafeHtml>(
 				cellP) {
-			@Override
+
 			public SafeHtml getValue(EvaluateItem item) {
 				SafeHtmlBuilder sb = new SafeHtmlBuilder();
 				sb.appendHtmlConstant(item.P.toHTMLString());
@@ -144,7 +144,7 @@ public class EvaluationTable extends Composite {
 		final SafeHtmlCell cellO = new SafeHtmlCell();
 		Column<EvaluateItem, SafeHtml> colObj = new Column<EvaluateItem, SafeHtml>(
 				cellO) {
-			@Override
+
 			public SafeHtml getValue(EvaluateItem item) {
 				SafeHtmlBuilder sb = new SafeHtmlBuilder();
 				sb.appendHtmlConstant(item.O.toHTMLString());
@@ -155,7 +155,7 @@ public class EvaluationTable extends Composite {
 
 		Column<EvaluateItem, Boolean> colIsValid = new Column<EvaluateItem, Boolean>(
 				new CheckboxCell(true, false)) {
-			@Override
+
 			public Boolean getValue(EvaluateItem item) {
 				return item.isWrong;
 			}
@@ -165,7 +165,7 @@ public class EvaluationTable extends Composite {
 
 		// Add a field updater to be notified when the user enters a new name.
 		colIsValid.setFieldUpdater(new FieldUpdater<EvaluateItem, Boolean>() {
-			@Override
+
 			public void update(int index, EvaluateItem object, Boolean value) {
 				dataProvider.getList().get(index).isWrong = value;
 				if (value == false) {
@@ -183,7 +183,7 @@ public class EvaluationTable extends Composite {
 		final SafeHtmlCell cellError = new SafeHtmlCell();
 		Column<EvaluateItem, SafeHtml> colError = new Column<EvaluateItem, SafeHtml>(
 				cellError) {
-			@Override
+
 			public SafeHtml getValue(EvaluateItem item) {
 				SafeHtmlBuilder sb = new SafeHtmlBuilder();
 				sb.appendHtmlConstant(item.errorTittle);
@@ -233,7 +233,7 @@ public class EvaluationTable extends Composite {
 			lstPager.addItem("" + arrPagerSizes[i]);
 		}
 		lstPager.addChangeHandler(new ChangeHandler() {
-			@Override
+
 			public void onChange(ChangeEvent event) {
 				tblEvalTriples.setPageSize(arrPagerSizes[lstPager
 						.getSelectedIndex()]);

@@ -67,7 +67,6 @@ public class StartPage extends Composite {
 		
 		btnStart.addClickHandler(new ClickHandler() {
 
-			@Override
 			public void onClick(ClickEvent event) {
 				btnStart.setEnabled(false);
 				SessionContext.showPopup();
@@ -111,7 +110,6 @@ public class StartPage extends Composite {
 		// Authenticate with Google button Handler
 		btnAuth.addClickHandler(new ClickHandler() {
 
-			@Override
 			public void onClick(ClickEvent event) {
 
 				SessionContext.showPopup();
@@ -120,7 +118,6 @@ public class StartPage extends Composite {
 						.withScopes(SCOPE); // Can specify multiple scopes here
 				Auth.get().login(req, new Callback<String, Throwable>() {
 
-					@Override
 					public void onSuccess(String token) {
 						// You now have the OAuth2 token needed to sign
 						// authenticated requests.
@@ -128,7 +125,6 @@ public class StartPage extends Composite {
 						handleUserInfo(token);
 					}
 
-					@Override
 					public void onFailure(Throwable caught) {
 						Window.alert("Authentication failed...");
 						SessionContext.hidePopup();
@@ -139,7 +135,6 @@ public class StartPage extends Composite {
 		
 		btnRefreshStats.addClickHandler(new ClickHandler() {
 			
-			@Override
 			public void onClick(ClickEvent event) {
 				wdgUserStatTable.updateData();
 			}
@@ -161,7 +156,7 @@ public class StartPage extends Composite {
 			rb.setHeader("Host", "spreadsheets.google.com");
 			rb.setHeader("Authorization", "Bearer " + authToken);
 			rb.setCallback(new RequestCallback() {
-				@Override
+
 				public void onResponseReceived(Request request,
 						Response response) {
 					if (response.getStatusCode() == 200) {
@@ -200,7 +195,6 @@ public class StartPage extends Composite {
 					}
 				}
 
-				@Override
 				public void onError(Request request, Throwable exception) {
 					Window.alert("Cannot retrieve user info!\nERROR : "
 							+ exception.getMessage());

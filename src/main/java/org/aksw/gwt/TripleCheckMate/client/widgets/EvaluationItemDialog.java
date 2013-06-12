@@ -142,7 +142,6 @@ public class EvaluationItemDialog extends DialogBox {
 
 		treeError.addSelectionHandler(new SelectionHandler<TreeItem>() {
 
-			@Override
 			public void onSelection(SelectionEvent<TreeItem> event) {
 				// TODO Auto-generated method stub
 				final TreeItem treeItem = event.getSelectedItem();

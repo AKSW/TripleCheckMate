@@ -103,7 +103,7 @@ public class UserStatisticsTable extends Composite{
 
 		// Table columns
 		Column<UserRecord, SafeHtml> colUserName = new Column<UserRecord, SafeHtml>(new SafeHtmlCell()) {
-			@Override
+
 			public SafeHtml getValue(UserRecord item) {
 				SafeHtmlBuilder sb = new SafeHtmlBuilder();
 				sb.appendHtmlConstant(item.toHTMLString());
@@ -120,7 +120,7 @@ public class UserStatisticsTable extends Composite{
 		});
 
 		Column<UserRecord, String> colRes = new Column<UserRecord, String>(new TextCell()) {
-			@Override
+
 			public String getValue(UserRecord object) {
 				// TODO Auto-generated method stub
 				return "" + object.recordCount;
@@ -137,7 +137,7 @@ public class UserStatisticsTable extends Composite{
 		});
 
 		Column<UserRecord, String> colTriples = new Column<UserRecord, String>(new TextCell()) {
-			@Override
+
 			public String getValue(UserRecord object) {
 				// TODO Auto-generated method stub
 				return "" + object.errorCount;
@@ -154,7 +154,7 @@ public class UserStatisticsTable extends Composite{
 		});
 
 		Column<UserRecord, String> colErrorTypes = new Column<UserRecord, String>(new TextCell()) {
-			@Override
+
 			public String getValue(UserRecord object) {
 				// TODO Auto-generated method stub
 				return "" + object.distinctErrorCount;

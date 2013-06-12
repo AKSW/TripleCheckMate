@@ -179,7 +179,6 @@ public class JDBCStorageService extends StorageService {
 		executeUpdateQuery(userUpdateQuery);
 	}
 
-	@Override
 	public int saveEvaluation(long sessionID, EvaluateResource item)
 			throws StorageServiceException {
 		Connection conn = null;
@@ -269,7 +268,6 @@ public class JDBCStorageService extends StorageService {
 		return 1;
 	}
 
-	@Override
 	public long createAndGetSession(long userID, long campaignID)
 			throws StorageServiceException {
 		Connection conn = null;
@@ -474,7 +472,6 @@ public class JDBCStorageService extends StorageService {
 		return retVal;
 	}
 
-	@Override
 	public int saveClasses(List<ClassItem> items)
 			throws StorageServiceException {
 		Connection conn = null;
@@ -535,7 +532,6 @@ public class JDBCStorageService extends StorageService {
 		return retVal;
 	}
 
-	@Override
 	public List<ClassItem> getClassChildren(long classID)
 			throws StorageServiceException {
 		Connection conn = null;
@@ -599,7 +595,6 @@ public class JDBCStorageService extends StorageService {
 
 	}
 
-	@Override
 	public int updateClassCount(long id, long count)
 			throws StorageServiceException {
 		String query = "UPDATE classes SET count_cache = " + count
@@ -608,7 +603,6 @@ public class JDBCStorageService extends StorageService {
 		return 1;
 	}
 
-	@Override
 	public List<String> getExistingEvaluations(long userID, String classType)
 			throws StorageServiceException {
 		Connection conn = null;
@@ -669,7 +663,6 @@ public class JDBCStorageService extends StorageService {
 		return items;
 	}
 
-	@Override
 	public List<ErrorItem> getErrorChildren(long errorID)
 			throws StorageServiceException {
 		Connection conn = null;
@@ -736,7 +729,6 @@ public class JDBCStorageService extends StorageService {
 
 	}
 
-	@Override
 	public List<UserRecord> getUSerStatistics(long uid)
 			throws StorageServiceException {
 		// TODO Auto-generated method stub

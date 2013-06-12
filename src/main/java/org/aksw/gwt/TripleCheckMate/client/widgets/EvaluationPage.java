@@ -88,7 +88,7 @@ public class EvaluationPage extends Composite {
 		dlgEvalSelect.hide();
 
 		ClickHandler handler = new ClickHandler() {
-			@Override
+
 			public void onClick(ClickEvent event) {
 				// The user must select any option to enable
 				btnSave.setEnabled(true);
@@ -106,7 +106,6 @@ public class EvaluationPage extends Composite {
 
 		btnSave.addClickHandler(new ClickHandler() {
 
-			@Override
 			public void onClick(ClickEvent event) {
 				if (rdValid.getValue() == true) {
 					if (tblEval.hasMarkedErrors() == true) {
@@ -140,7 +139,6 @@ public class EvaluationPage extends Composite {
 
 		btnSkip.addClickHandler(new ClickHandler() {
 
-			@Override
 			public void onClick(ClickEvent event) {
 				if (Window
 						.confirm("Are sou sure you want to skip this resource? ")) {

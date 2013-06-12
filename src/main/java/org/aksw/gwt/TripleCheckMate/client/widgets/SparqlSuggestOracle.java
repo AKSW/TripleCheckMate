@@ -44,7 +44,7 @@ public class SparqlSuggestOracle extends SuggestOracle {
 
     			RequestBuilder rb = new RequestBuilder(RequestBuilder.GET, queryURL);
     			rb.setCallback(new com.google.gwt.http.client.RequestCallback() {
-    				@Override
+
     				public void onResponseReceived(com.google.gwt.http.client.Request req, com.google.gwt.http.client.Response res) {
     					JsonSparqlResult result = new JsonSparqlResult(res.getText());
     					Collection<Suggestion> suggestions = new ArrayList<Suggestion>();
@@ -57,7 +57,6 @@ public class SparqlSuggestOracle extends SuggestOracle {
                         callback.onSuggestionsReady(request, new Response(suggestions));
     				}
 
-    				@Override
     				public void onError(com.google.gwt.http.client.Request request, Throwable exception) {
 
     				}
@@ -84,12 +83,10 @@ public class SparqlSuggestOracle extends SuggestOracle {
 	        this.uri = uri;
 	    }
 
-	    @Override
 	    public String getDisplayString() {
 	        return this.uri;
 	    }
 
-	    @Override
 	    public String getReplacementString() {
 	        return this.uri;
 	    }
