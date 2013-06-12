@@ -127,13 +127,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>gwt-maven</id>
-            <url>
-                http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/
-            </url>
-        </repository>
-    </repositories>
 </project>
