@@ -83,7 +83,7 @@ public class EvaluationPage extends Composite {
             public void onClick(ClickEvent event) {
                 // The user must select any option to enable
                 btnSave.setEnabled(true);
-                if (rdValid.getValue() == false)
+                if (rdValid.getValue() == true)
                     ckMissing.setValue(false);
                 txtComments.setEnabled(!rdValid.getValue());
                 ckMissing.setEnabled(!rdValid.getValue());
