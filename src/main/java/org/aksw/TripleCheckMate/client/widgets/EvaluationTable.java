@@ -32,6 +32,7 @@ import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.view.client.CellPreviewEvent;
 import com.google.gwt.view.client.ListDataProvider;
 import org.aksw.TripleCheckMate.shared.evaluate.EvaluateItem;
 
@@ -175,11 +176,32 @@ public class EvaluationTable extends Composite {
                     dataProvider.getList().get(index).errorTittle = "";
                     tblEvalTriples.redraw();
                 } else {
-                    dlgEdit.setEvaluateItem(dataProvider.getList().get(index));
+                    dlgEdit.setEvaluateItem(dataProvider.getList().get(index), true);
                     dlgEdit.center();
                     dlgEdit.show();
                 }
 
+            }
+        });
+
+        tblEvalTriples.addCellPreviewHandler(new CellPreviewEvent.Handler<EvaluateItem>() {
+
+            long lastClick = -1000;
+
+            public void onCellPreview(CellPreviewEvent<EvaluateItem> event) {
+
+                long clictAt = System.currentTimeMillis();
+
+                if (event.getNativeEvent().getType().contains("click")) {
+                    if (clictAt - lastClick < 600) { // dblclick on 2 clicks detected within 300 ms
+                        int index = event.getIndex();
+                        dlgEdit.setEvaluateItem(dataProvider.getList().get(index), false);
+                        dlgEdit.center();
+                        dlgEdit.show();
+                    }
+                    lastClick = System.currentTimeMillis();
+
+                }
             }
         });
 

@@ -18,10 +18,12 @@ package org.aksw.TripleCheckMate.client.widgets;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
@@ -65,6 +67,7 @@ public class EvaluationItemDialog extends DialogBox {
 
     private EvaluateItem item = null;
     private EvaluationTable parentDlg = null;
+    private boolean oldStatus = false;
 
     public EvaluationItemDialog() {
         super();
@@ -95,20 +98,21 @@ public class EvaluationItemDialog extends DialogBox {
 
         btnCancel.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-                EvaluationItemDialog.this.hide();
-                item.isWrong = false;
-                parentDlg.updateData();
+                onCancelPressed();
             }
         });
-
     }
 
     public void setParent(EvaluationTable parent) {
         this.parentDlg = parent;
     }
 
-    public void setEvaluateItem(EvaluateItem item) {
+    public void setEvaluateItem(EvaluateItem item, boolean statePreChanged) {
         this.item = item;
+        if (statePreChanged == true)
+            this.oldStatus = !item.isWrong;
+        else
+            this.oldStatus = item.isWrong;
 
         htmlTripleS.setHTML("<strong>Subject</strong>: "
                 + item.S.toHTMLString());
@@ -269,5 +273,22 @@ public class EvaluationItemDialog extends DialogBox {
             }
         }
         return null;
+    }
+
+    private void onCancelPressed() {
+        EvaluationItemDialog.this.hide();
+        item.isWrong = this.oldStatus;
+        parentDlg.updateData();
+    }
+
+    protected void onPreviewNativeEvent(Event.NativePreviewEvent event) {
+        super.onPreviewNativeEvent(event);
+        switch (event.getTypeInt()) {
+            case Event.ONKEYDOWN:
+                if (event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ESCAPE) {
+                    onCancelPressed();
+                }
+                break;
+        }
     }
 }
