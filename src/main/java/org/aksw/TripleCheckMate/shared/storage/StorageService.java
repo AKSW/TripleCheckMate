@@ -15,23 +15,20 @@
  ******************************************************************************/
 package org.aksw.TripleCheckMate.shared.storage;
 
+
 import org.aksw.TripleCheckMate.shared.evaluate.ClassItem;
 import org.aksw.TripleCheckMate.shared.evaluate.ErrorItem;
 import org.aksw.TripleCheckMate.shared.evaluate.EvaluateResource;
 import org.aksw.TripleCheckMate.shared.evaluate.UserRecord;
+import org.aksw.TripleCheckMate.shared.sparql.Endpoint;
 import org.aksw.TripleCheckMate.shared.storage.exception.StorageServiceException;
 
 import java.util.List;
 
 public abstract class StorageService {
 
-    /**
-     * Saves item to storage service
-     *
-     * @param endpoint
-     * @param graph
-     * @param items
-     */
+    public abstract List<Endpoint> getCampaigns() throws StorageServiceException;
+
     public abstract int saveEvaluation(long sessionID, EvaluateResource item) throws StorageServiceException;
 
     public abstract long createAndGetSession(long userID, long campaignID) throws StorageServiceException;

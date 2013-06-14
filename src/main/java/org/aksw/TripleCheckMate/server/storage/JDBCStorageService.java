@@ -16,6 +16,7 @@
 package org.aksw.TripleCheckMate.server.storage;
 
 import org.aksw.TripleCheckMate.shared.evaluate.*;
+import org.aksw.TripleCheckMate.shared.sparql.Endpoint;
 import org.aksw.TripleCheckMate.shared.storage.StorageService;
 import org.aksw.TripleCheckMate.shared.storage.exception.StorageServiceException;
 
@@ -112,7 +113,7 @@ public class JDBCStorageService extends StorageService {
             // Handle errors for JDBC
             if (conn != null) {
                 try {
-                    if (conn.getAutoCommit() == false)
+                    if (!conn.getAutoCommit())
                         conn.rollback();
                 } catch (SQLException se2) {
                     se2.printStackTrace();
@@ -168,6 +169,63 @@ public class JDBCStorageService extends StorageService {
                 + ", " + " statT=" + cntTrpl + ", " + " statD=" + cntDistinct
                 + " " + " WHERE uid = " + userID;
         executeUpdateQuery(userUpdateQuery);
+    }
+
+    @Override
+    public List<Endpoint> getCampaigns() throws StorageServiceException {
+
+
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        List<Endpoint> items = new ArrayList<Endpoint>();
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            st = conn
+                    .prepareStatement(" String query = \" SELECT * FROM campaign WHERE copen = 1 ");
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                String name = rs.getString("cname");
+                String endpoint = rs.getString("endpoint");
+                String graphs = rs.getString("cgraphs");
+                items.add(new Endpoint(endpoint,graphs, name));
+            }
+
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            if (conn != null) {
+                try {
+                    if (conn.getAutoCommit() == false)
+                        conn.rollback();
+                } catch (SQLException se2) {
+                    se2.printStackTrace();
+                    throw new StorageServiceException(se2.getMessage());
+                }
+            }
+            se.printStackTrace();
+            throw new StorageServiceException(se.getMessage());
+        } catch (Exception e) {
+            // Handle errors for Class.forName
+            e.printStackTrace();
+            throw new StorageServiceException(e.getMessage());
+        } finally {
+            // finally block used to close resources
+            try {
+                if (st != null)
+                    st.close();
+            } catch (SQLException se2) {
+            }// nothing we can do
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }// end finally try
+        }// end try
+
+        return items;
     }
 
     public int saveEvaluation(long sessionID, EvaluateResource item)

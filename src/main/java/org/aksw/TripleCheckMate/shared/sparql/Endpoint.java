@@ -18,13 +18,21 @@ package org.aksw.TripleCheckMate.shared.sparql;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.Random;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Endpoint {
+public class Endpoint implements Serializable {
     private String endpoint;
     private List<String> graphs = new ArrayList<String>();
     private String name;
+
+    public Endpoint() {
+        endpoint = "";
+        name="";
+        graphs = Arrays.asList();
+    }
 
     public Endpoint(String endpoint, String graphs, String name) {
         this.endpoint = endpoint;

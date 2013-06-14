@@ -19,10 +19,13 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import org.aksw.TripleCheckMate.shared.evaluate.ClassItem;
 import org.aksw.TripleCheckMate.shared.evaluate.ErrorItem;
 import org.aksw.TripleCheckMate.shared.evaluate.EvaluateResource;
+import org.aksw.TripleCheckMate.shared.sparql.Endpoint;
 
 import java.util.List;
 
 public interface EvaluationRequestAsync {
+
+    void getCampaigns(AsyncCallback<List<Endpoint>> callback);
 
     public void SaveEvaluation(long sessionID, EvaluateResource item, AsyncCallback<String> callback);
 

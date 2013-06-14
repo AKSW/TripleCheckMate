@@ -20,12 +20,16 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import org.aksw.TripleCheckMate.shared.evaluate.ClassItem;
 import org.aksw.TripleCheckMate.shared.evaluate.ErrorItem;
 import org.aksw.TripleCheckMate.shared.evaluate.EvaluateResource;
+import org.aksw.TripleCheckMate.shared.sparql.Endpoint;
 import org.aksw.TripleCheckMate.shared.storage.exception.StorageServiceException;
 
 import java.util.List;
 
 @RemoteServiceRelativePath("EvaluationRequest")
 public interface EvaluationRequest extends RemoteService {
+
+    public List<Endpoint> getCampaigns() throws StorageServiceException;
+
     public String SaveEvaluation(long sessionID, EvaluateResource item) throws StorageServiceException;
 
     public List<String> getExistingEvaluations(long user, String classType) throws StorageServiceException;

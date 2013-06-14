@@ -20,6 +20,7 @@ import org.aksw.TripleCheckMate.client.requests.EvaluationRequest;
 import org.aksw.TripleCheckMate.shared.evaluate.ClassItem;
 import org.aksw.TripleCheckMate.shared.evaluate.ErrorItem;
 import org.aksw.TripleCheckMate.shared.evaluate.EvaluateResource;
+import org.aksw.TripleCheckMate.shared.sparql.Endpoint;
 import org.aksw.TripleCheckMate.shared.storage.StorageFactory;
 import org.aksw.TripleCheckMate.shared.storage.StorageService;
 import org.aksw.TripleCheckMate.shared.storage.exception.StorageServiceException;
@@ -48,6 +49,11 @@ public class EvaluationRequestImpl extends RemoteServiceServlet implements
 
     private String getAbsolutePath() {
         return getServletContext().getRealPath("/");
+    }
+
+    public List<Endpoint> getCampaigns() throws StorageServiceException {
+        StorageService service = StorageFactory.create(getAbsolutePath());
+        return service.getCampaigns();
     }
 
     public String SaveEvaluation(long sessionID, EvaluateResource item) throws StorageServiceException {
