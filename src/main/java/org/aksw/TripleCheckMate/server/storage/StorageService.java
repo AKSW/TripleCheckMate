@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package org.aksw.TripleCheckMate.shared.storage;
+package org.aksw.TripleCheckMate.server.storage;
 
 
 import org.aksw.TripleCheckMate.shared.evaluate.ClassItem;
@@ -21,7 +21,7 @@ import org.aksw.TripleCheckMate.shared.evaluate.ErrorItem;
 import org.aksw.TripleCheckMate.shared.evaluate.EvaluateResource;
 import org.aksw.TripleCheckMate.shared.evaluate.UserRecord;
 import org.aksw.TripleCheckMate.shared.sparql.Endpoint;
-import org.aksw.TripleCheckMate.shared.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.server.storage.exception.StorageServiceException;
 
 import java.util.List;
 

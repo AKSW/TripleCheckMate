@@ -25,7 +25,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import org.aksw.TripleCheckMate.shared.evaluate.EvaluateItem;
 import org.aksw.TripleCheckMate.shared.evaluate.SessionContext;
-import org.aksw.TripleCheckMate.shared.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.server.storage.exception.StorageServiceException;
 
 import java.util.List;
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package org.aksw.TripleCheckMate.shared.storage;
+package org.aksw.TripleCheckMate.server.storage;
 
 
 // copied/adapted from org.apache.commons.lang3.StringEscapeUtils

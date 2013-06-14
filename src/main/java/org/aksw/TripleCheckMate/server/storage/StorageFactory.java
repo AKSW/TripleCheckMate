@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package org.aksw.TripleCheckMate.shared.storage;
-
-import org.aksw.TripleCheckMate.server.storage.JDBCStorageService;
+package org.aksw.TripleCheckMate.server.storage;
 
 import java.io.FileInputStream;
 import java.io.IOException;

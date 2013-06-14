@@ -17,8 +17,7 @@ package org.aksw.TripleCheckMate.server.storage;
 
 import org.aksw.TripleCheckMate.shared.evaluate.*;
 import org.aksw.TripleCheckMate.shared.sparql.Endpoint;
-import org.aksw.TripleCheckMate.shared.storage.StorageService;
-import org.aksw.TripleCheckMate.shared.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.server.storage.exception.StorageServiceException;
 
 import java.sql.*;
 import java.util.ArrayList;
