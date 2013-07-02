@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Endpoint implements Serializable {
+    private long endpointID = 0;
     private String endpoint;
     private List<String> graphs = new ArrayList<String>();
     private String name;
@@ -34,12 +35,17 @@ public class Endpoint implements Serializable {
         graphs = Arrays.asList();
     }
 
-    public Endpoint(String endpoint, String graphs, String name) {
+    public Endpoint(long id, String endpoint, String graphs, String name) {
+        this.endpointID = id;
         this.endpoint = endpoint;
         String[] g = graphs.split(";");
         for (int i = 0; i < g.length; i++)
             this.graphs.add(g[i]);
         this.name = name;
+    }
+
+    public long getID(){
+        return endpointID;
     }
 
     public String getName() {

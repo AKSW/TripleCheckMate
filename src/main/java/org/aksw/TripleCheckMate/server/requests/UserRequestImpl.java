@@ -20,7 +20,7 @@ import org.aksw.TripleCheckMate.client.requests.UserRequest;
 import org.aksw.TripleCheckMate.shared.evaluate.UserRecord;
 import org.aksw.TripleCheckMate.server.storage.StorageFactory;
 import org.aksw.TripleCheckMate.server.storage.StorageService;
-import org.aksw.TripleCheckMate.server.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.shared.exceptions.StorageServiceException;
 
 import java.util.List;
 

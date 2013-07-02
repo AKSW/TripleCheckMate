@@ -25,7 +25,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import org.aksw.TripleCheckMate.shared.evaluate.EvaluateItem;
 import org.aksw.TripleCheckMate.shared.evaluate.SessionContext;
-import org.aksw.TripleCheckMate.server.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.shared.exceptions.StorageServiceException;
 
 import java.util.List;
 
@@ -144,7 +144,7 @@ public class EvaluationPage extends Composite {
 
     private void setAboutText(String aboutURI) {
         htmlAbout.setHTML("<h2>About: <a href=\""
-                + aboutURI.replace("http://dbpedia.org/", "http://dbpedia.aksw.org:8877/")
+                + aboutURI.replace("http://dbpedia.org/", "http://live.dbpedia.org/")
                 + "\" target=\"_blank\">"
                 + aboutURI
                 + "</a> <a href=\""

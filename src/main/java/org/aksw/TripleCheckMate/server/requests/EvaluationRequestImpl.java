@@ -23,7 +23,7 @@ import org.aksw.TripleCheckMate.shared.evaluate.EvaluateResource;
 import org.aksw.TripleCheckMate.shared.sparql.Endpoint;
 import org.aksw.TripleCheckMate.server.storage.StorageFactory;
 import org.aksw.TripleCheckMate.server.storage.StorageService;
-import org.aksw.TripleCheckMate.server.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.shared.exceptions.StorageServiceException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;

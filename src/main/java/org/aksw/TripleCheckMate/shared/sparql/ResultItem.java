@@ -60,6 +60,6 @@ public class ResultItem implements Serializable {
     }
 
     private String dereferenceURI(String uri) {
-        return uri.replace("http://dbpedia.org/", "http://dbpedia.aksw.org:8877/");
+        return uri.replace("http://dbpedia.org/", "http://live.dbpedia.org/");
     }
 }

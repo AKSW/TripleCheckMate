@@ -34,7 +34,7 @@ import org.aksw.TripleCheckMate.shared.evaluate.EvaluateItem;
 import org.aksw.TripleCheckMate.shared.evaluate.SessionContext;
 import org.aksw.TripleCheckMate.shared.sparql.JsonSparqlResult;
 import org.aksw.TripleCheckMate.shared.sparql.ResultItem;
-import org.aksw.TripleCheckMate.server.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.shared.exceptions.StorageServiceException;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -34,7 +34,10 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import org.aksw.TripleCheckMate.shared.evaluate.SessionContext;
 import org.aksw.TripleCheckMate.shared.evaluate.UserRecord;
-import org.aksw.TripleCheckMate.shared.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.shared.exceptions.StorageServiceException;
+import org.aksw.TripleCheckMate.shared.sparql.Endpoint;
+
+import java.util.List;
 
 public class StartPage extends Composite {
 
@@ -71,39 +74,10 @@ public class StartPage extends Composite {
             public void onClick(ClickEvent event) {
                 btnStart.setEnabled(false);
                 SessionContext.showPopup();
-                // get campaign id
-                // TODO get it from DB
-                SessionContext.evaluationCampaign = 1;
 
-                // create new session
-                AsyncCallback<Long> sessionGetCallback = new AsyncCallback<Long>() {
-                    public void onFailure(Throwable caught) {
-                        // Error getting the user from DB
-                        String details = caught.getMessage();
-                        if (caught instanceof StorageServiceException) {
-                            details = ((StorageServiceException) caught)
-                                    .getErrorMessage();
-                        }
-                        Window.alert(details);
-                        SessionContext.hidePopup();
-                    }
+                getCampainAndStart();
 
-                    public void onSuccess(Long session) {
-                        // User retrieved, if null does not exists (=> store)
-                        // else use stored info
 
-                        SessionContext.userSession = session;
-                        SessionContext.gotoEvaluationPage();
-
-                        btnStart.setEnabled(false);
-                        SessionContext.hidePopup();
-                    }
-                };
-                // Call getUserInfo (async)
-                SessionContext.userReqSrv.createAndGetSession(
-                        SessionContext.user.userID,
-                        SessionContext.evaluationCampaign, sessionGetCallback);
-                // Go to next page
 
             }
         });
@@ -209,6 +183,70 @@ public class StartPage extends Composite {
             SessionContext.hidePopup();
         }
 
+    }
+
+    private void getCampainAndStart() {
+        // Set up the callback object get campaign from DB.
+        AsyncCallback<List<Endpoint>> campaignGetCallback = new AsyncCallback<List<Endpoint>>() {
+            public void onFailure(Throwable caught) {
+                // Error getting the user from DB
+                String details = caught.getMessage();
+                if (caught instanceof StorageServiceException) {
+                    details = ((StorageServiceException) caught)
+                            .getErrorMessage();
+                }
+                Window.alert(details);
+                SessionContext.hidePopup();
+            }
+
+            public void onSuccess(List<Endpoint> campaigns) {
+                if (campaigns.isEmpty()) {
+
+                    Window.alert("No evaluation campaigns defined in database, Cannot start!");
+                    SessionContext.hidePopup();
+                    return;
+                }
+                SessionContext.endpoint = campaigns.get(0);
+
+                createNewSession();
+
+                SessionContext.hidePopup();
+            }
+        };
+        SessionContext.evaluationReqSrv.getCampaigns(campaignGetCallback);
+
+    }
+
+    private void createNewSession(){
+        // create new session
+        AsyncCallback<Long> sessionGetCallback = new AsyncCallback<Long>() {
+            public void onFailure(Throwable caught) {
+                // Error getting the user from DB
+                String details = caught.getMessage();
+                if (caught instanceof StorageServiceException) {
+                    details = ((StorageServiceException) caught)
+                            .getErrorMessage();
+                }
+                Window.alert(details);
+                SessionContext.hidePopup();
+            }
+
+            public void onSuccess(Long session) {
+                // User retrieved, if null does not exists (=> store)
+                // else use stored info
+
+                SessionContext.userSession = session;
+                SessionContext.gotoEvaluationPage();
+
+                btnStart.setEnabled(false);
+                SessionContext.hidePopup();
+            }
+        };
+        // Call getUserInfo (async)
+        SessionContext.userReqSrv.createAndGetSession(
+                SessionContext.user.userID,
+                SessionContext.evaluationCampaign, sessionGetCallback);
+        // Go to next page
     }
 
     private void searchForUserinStorageService() {

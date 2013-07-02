@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package org.aksw.TripleCheckMate.server.storage.exception;
+package org.aksw.TripleCheckMate.shared.exceptions;
 
 import java.io.Serializable;
 

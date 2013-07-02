@@ -38,7 +38,7 @@ CREATE TABLE `campaign` (
 
 LOCK TABLES `campaign` WRITE;
 /*!40000 ALTER TABLE `campaign` DISABLE KEYS */;
-INSERT INTO `campaign` VALUES (1,'DBpedia Evaluation Campaign','http://dbpedia.aksw.org:8877/sparql','http://live.dbpedia.org',1);
+INSERT INTO `campaign` VALUES (1,'DBpedia Evaluation Campaign','http://live.dbpedia.org/sparql','http://live.dbpedia.org',1);
 /*!40000 ALTER TABLE `campaign` ENABLE KEYS */;
 UNLOCK TABLES;
 

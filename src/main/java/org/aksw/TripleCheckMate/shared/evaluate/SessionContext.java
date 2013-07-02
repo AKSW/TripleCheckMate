@@ -43,9 +43,10 @@ public class SessionContext {
     public static List<EvaluateResource> evaluations = new ArrayList<EvaluateResource>();
     // TODO get it with RPC
     public static Endpoint endpoint = new Endpoint(
-            "http://dbpedia.aksw.org:8877/sparql",
+            0,
+            "http://live.dbpedia.org/sparql",
             "http://dbpedia.org",
-            "dbpedia.aksw.org:8877/sparql");
+            "live.dbpedia.org/sparql");
 
     // Async RPC Requests
     public static EvaluationRequestAsync evaluationReqSrv = GWT

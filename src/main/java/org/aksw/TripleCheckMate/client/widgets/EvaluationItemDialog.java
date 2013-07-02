@@ -82,17 +82,7 @@ public class EvaluationItemDialog extends DialogBox {
 
         btnSave.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-                TreeItem ti = treeError.getSelectedItem();
-                if (ti == null) {
-                    Window.alert("Please select an error!");
-                    return;
-                }
-                ErrorItem ei = (ErrorItem) ti.getUserObject();
-                item.errorType = ei.ID;
-                item.errorTittle = ei.title;
-                item.comments = txtComments.getText();
-                EvaluationItemDialog.this.hide();
-                parentDlg.updateData();
+                onSavePressed();
             }
         });
 
@@ -101,6 +91,7 @@ public class EvaluationItemDialog extends DialogBox {
                 onCancelPressed();
             }
         });
+
     }
 
     public void setParent(EvaluationTable parent) {
@@ -278,6 +269,20 @@ public class EvaluationItemDialog extends DialogBox {
     private void onCancelPressed() {
         EvaluationItemDialog.this.hide();
         item.isWrong = this.oldStatus;
+        parentDlg.updateData();
+    }
+
+    private void onSavePressed() {
+        TreeItem ti = treeError.getSelectedItem();
+        if (ti == null) {
+            Window.alert("Please select an error!");
+            return;
+        }
+        ErrorItem ei = (ErrorItem) ti.getUserObject();
+        item.errorType = ei.ID;
+        item.errorTittle = ei.title;
+        item.comments = txtComments.getText();
+        EvaluationItemDialog.this.hide();
         parentDlg.updateData();
     }
 

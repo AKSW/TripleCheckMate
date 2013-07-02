@@ -21,7 +21,7 @@ import org.aksw.TripleCheckMate.shared.evaluate.ClassItem;
 import org.aksw.TripleCheckMate.shared.evaluate.ErrorItem;
 import org.aksw.TripleCheckMate.shared.evaluate.EvaluateResource;
 import org.aksw.TripleCheckMate.shared.sparql.Endpoint;
-import org.aksw.TripleCheckMate.server.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.shared.exceptions.StorageServiceException;
 
 import java.util.List;
 

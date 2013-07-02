@@ -29,7 +29,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.view.client.ListDataProvider;
 import org.aksw.TripleCheckMate.shared.evaluate.SessionContext;
 import org.aksw.TripleCheckMate.shared.evaluate.UserRecord;
-import org.aksw.TripleCheckMate.server.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.shared.exceptions.StorageServiceException;
 
 import java.util.Comparator;
 import java.util.List;

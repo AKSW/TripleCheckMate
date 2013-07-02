@@ -18,7 +18,7 @@ package org.aksw.TripleCheckMate.client.requests;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import org.aksw.TripleCheckMate.shared.evaluate.UserRecord;
-import org.aksw.TripleCheckMate.server.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.shared.exceptions.StorageServiceException;
 
 import java.util.List;
 

@@ -17,7 +17,7 @@ package org.aksw.TripleCheckMate.server.storage;
 
 import org.aksw.TripleCheckMate.shared.evaluate.*;
 import org.aksw.TripleCheckMate.shared.sparql.Endpoint;
-import org.aksw.TripleCheckMate.server.storage.exception.StorageServiceException;
+import org.aksw.TripleCheckMate.shared.exceptions.StorageServiceException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -182,14 +182,15 @@ public class JDBCStorageService extends StorageService {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             st = conn
-                    .prepareStatement(" String query = \" SELECT * FROM campaign WHERE copen = 1 ");
+                    .prepareStatement(" SELECT * FROM campaign WHERE copened = 1 ");
             rs = st.executeQuery();
 
             while (rs.next()) {
+                long id = rs.getLong("cid");
                 String name = rs.getString("cname");
-                String endpoint = rs.getString("endpoint");
+                String endpoint = rs.getString("cendpoint");
                 String graphs = rs.getString("cgraphs");
-                items.add(new Endpoint(endpoint,graphs, name));
+                items.add(new Endpoint(id, endpoint,graphs, name));
             }
 
         } catch (SQLException se) {
