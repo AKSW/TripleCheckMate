@@ -27,6 +27,22 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DemoStorageService extends StorageService {
+
+    //TODO for now we use a db connection in test to get classes and errors
+    private String JDBC_DRIVER = "org.h2.Driver";
+    private String DB_URL = "jdbc:h2:evaluation_db";
+    private String USER = "sa";
+    private String PASS = "";
+
+    public DemoStorageService(String driver, String dburl, String username,
+                              String password) {
+        JDBC_DRIVER = driver;
+        DB_URL = dburl;
+        USER = username;
+        PASS = password;
+
+    }
+
     public List<Endpoint> getCampaigns() throws StorageServiceException {
         Endpoint e = new Endpoint(
                 0,
@@ -37,7 +53,7 @@ public class DemoStorageService extends StorageService {
     }
 
     public int saveEvaluation(long sessionID, EvaluateResource item) throws StorageServiceException {
-        return 1;
+        throw new StorageServiceException("This is a session is for demonstration purposes only and evaluations are not saved. Press skip to evaluate another resource.");
     }
 
     public long createAndGetSession(long userID, long campaignID) throws StorageServiceException {
@@ -70,7 +86,8 @@ public class DemoStorageService extends StorageService {
     }
 
     public List<ClassItem> getClassChildren(long classID) throws StorageServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        StorageService ss = new JDBCStorageService(JDBC_DRIVER, DB_URL, USER, PASS);
+        return ss.getClassChildren(classID);
     }
 
     public int updateClassCount(long id, long count) throws StorageServiceException {
@@ -78,7 +95,8 @@ public class DemoStorageService extends StorageService {
     }
 
     public List<ErrorItem> getErrorChildren(long errorID) throws StorageServiceException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        StorageService ss = new JDBCStorageService(JDBC_DRIVER, DB_URL, USER, PASS);
+        return ss.getErrorChildren(errorID);
     }
 
     public List<UserRecord> getUSerStatistics(long uid) throws StorageServiceException {
