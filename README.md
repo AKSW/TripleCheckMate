@@ -3,7 +3,8 @@ TripleCheckMate
 
 Linked Data Quality Evaluation software
 
-  Note: that the code use to run the original DBpedia evaluation campaign with triple check mate is [here](https://github.com/AKSW/TripleCheckMate/releases/tag/DBpediaCampaign)
+    Note: that the code use to run the original DBpedia 
+    evaluation campaign with triple check mate is [here](https://github.com/AKSW/TripleCheckMate/releases/tag/DBpediaCampaign)
 
 This software was developed as a general purpose tool for Linked Data Quality Evaluation.
 It's first use was for DBpedia but (almost) everything is configurable or can easily change.
