@@ -24,3 +24,8 @@ The software was built with Google Web Toolkit
 https://developers.google.com/web-toolkit/
 
 Homepage: http://aksw.org/Projects/TripleCheckMate.html
+
+Variations of TripleCheckMate
+=============================
+
+https://github.com/IMISE/TripleCheckMate - A form of TripleCheckMate adapted to worj with SNIK
