@@ -28,4 +28,4 @@ Homepage: http://aksw.org/Projects/TripleCheckMate.html
 Variations of TripleCheckMate
 =============================
 
-https://github.com/IMISE/TripleCheckMate - A form of TripleCheckMate adapted to worj with SNIK
+https://github.com/IMISE/TripleCheckMate - A fork of TripleCheckMate adapted to worj with SNIK
